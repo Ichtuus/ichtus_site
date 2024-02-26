@@ -3,6 +3,7 @@
     "source": ".output/server",
     "codebase": "nuxt"
   },
+  
   "hosting": {
     "site": "ichtussite",
     "cleanUrls": true,
