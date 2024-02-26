@@ -1,12 +1,7 @@
 import { Schema, model } from "mongoose";
+import { UserSchema } from "../../types/user";
 
-export interface UserDocument extends Document {
-  email: string;
-  username: string;
-  password: string;
-}
-
-const UserSchema = new Schema({
+const userSchema = new Schema<UserSchema>({
   email: {
     type: String,
     required: true,
@@ -15,7 +10,15 @@ const UserSchema = new Schema({
     lowercase: true,
   },
 
-  username: {
+  firstName: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+    lowercase: true,
+  },
+
+  lastName: {
     type: String,
     required: true,
     unique: true,
@@ -30,4 +33,4 @@ const UserSchema = new Schema({
   },
 });
 
-export const User = model<UserDocument>("User", UserSchema);
+export default model<UserSchema>("User", userSchema);
