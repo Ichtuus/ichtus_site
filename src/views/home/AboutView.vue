@@ -21,6 +21,7 @@ const dateToBeFrontDev = computed(
         <div class="text-300">
           {{ $t("ichtus_sample__about-block--jobdesc-label") }}
         </div>
+
         <Divider class="md:hidden" />
       </div>
     </div>
