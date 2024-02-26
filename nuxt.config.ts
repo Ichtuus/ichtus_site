@@ -1,18 +1,19 @@
+import { plugin } from "mongoose";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "~/assets/scss/main.scss" as *;',
-        },
-      },
-    },
-  },
 
   srcDir: "src/",
 
+  components: true,
+
+  css: [
+    "primevue/resources/themes/aura-light-purple/theme.css",
+    "primeicons/primeicons.css",
+  ],
+
+  // Auto import components: https://go.nuxtjs.dev/config-components
   modules: [
     // https://i18n.nuxtjs.org
     "@nuxtjs/i18n",
@@ -21,14 +22,10 @@ export default defineNuxtConfig({
     "@nuxt/image",
   ],
 
-  css: [
-    "primevue/resources/themes/aura-light-purple/theme.css",
-    "primeicons/primeicons.css",
-  ],
-
   primevue: {
     cssLayerOrder: "tailwind-base, primevue, tailwind-utilities",
   },
+  
   i18n: {
     // experimental: {
     //   localeDetector: "./localeDetector.ts",
@@ -51,6 +48,24 @@ export default defineNuxtConfig({
     defaultLocale: "en",
   },
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "~/assets/scss/main.scss" as *;',
+        },
+      },
+    },
+  },
+
+  nitro: {
+    plugins: ['~/server/index.ts']
+  },
+
+  runtimeConfig: {
+    MONGO_URI: process.env.MONGO_URI,
+    JWT_TOKEN_SECRET: process.env.JWT_TOKEN_SECRET,
+
+  },
 });
