@@ -10,7 +10,7 @@ onMounted(() => {
 const chartData = ref();
 const chartOptions = ref();
 
-const setChartData = () => {
+function setChartData() {
   const documentStyle = getComputedStyle(document.body);
 
   return {
@@ -39,9 +39,9 @@ const setChartData = () => {
       },
     ],
   };
-};
+}
 
-const setChartOptions = () => {
+function setChartOptions() {
   const documentStyle = getComputedStyle(document.documentElement);
   const textColor = documentStyle.getPropertyValue("--text-color");
 
@@ -55,7 +55,7 @@ const setChartOptions = () => {
       },
     },
   };
-};
+}
 </script>
 
 <template>
