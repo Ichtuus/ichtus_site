@@ -1,10 +1,12 @@
-import { plugin } from "mongoose";
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
   srcDir: "src/",
+
+  // alias: {
+  //   "@": "src",
+  // },
 
   components: true,
 
@@ -22,10 +24,14 @@ export default defineNuxtConfig({
     "@nuxt/image",
   ],
 
+  imports: {
+    dirs: ["stores"],
+  },
+
   primevue: {
     cssLayerOrder: "tailwind-base, primevue, tailwind-utilities",
   },
-  
+
   i18n: {
     // experimental: {
     //   localeDetector: "./localeDetector.ts",
@@ -48,7 +54,6 @@ export default defineNuxtConfig({
     defaultLocale: "en",
   },
 
-
   vite: {
     css: {
       preprocessorOptions: {
@@ -60,12 +65,11 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    plugins: ['~/server/index.ts']
+    plugins: ["~/server/index.ts"],
   },
 
   runtimeConfig: {
     MONGO_URI: process.env.MONGO_URI,
     JWT_TOKEN_SECRET: process.env.JWT_TOKEN_SECRET,
-
   },
 });

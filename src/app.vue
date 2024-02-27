@@ -1,4 +1,7 @@
 <script setup lang="ts">
+// import ToastService from 'primevue/toastservice';
+// const app = useNuxtApp()
+// app.use(ToastService);
 const head = useHead({
   addDirAttribute: true,
   identifierAttribute: "id",
@@ -53,6 +56,7 @@ const head = useHead({
       <Body>
         <NuxtLayout>
           <NuxtPage />
+          <Toast />
         </NuxtLayout>
       </Body>
     </Html>
