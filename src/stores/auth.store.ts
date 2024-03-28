@@ -21,17 +21,18 @@ export const useAuthStore = defineStore("auth", {
   getters: {},
   actions: {
     async signin(payload: SignInPayload) {
-      try {
-        await apiClient.post(ENDPOINTS.signIn, payload);
-      } catch (e) {
-        if (e && e.NetworkError) {
-          throw new NetworkError("Erreur réseau lors de la requête");
-        } else if (e.ApiError) {
-          throw new ApiError("Erreur lors de la requête API", e);
-        } else {
-          throw new Error("Une erreur inattendue est survenue");
-        }
-      }
+      // try {
+      await apiClient.post(ENDPOINTS.signIn, payload);
+      await navigateTo("/dashboard");
+      // } catch (e) {
+      //   if (e && e.NetworkError) {
+      //     throw new NetworkError("Erreur réseau lors de la requête");
+      //   } else if (e.ApiError) {
+      //     throw new ApiError("Erreur lors de la requête API", e);
+      //   } else {
+      //     throw new Error("Une erreur inattendue est survenue");
+      //   }
+      // }
     },
   },
 });

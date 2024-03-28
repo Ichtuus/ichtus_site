@@ -17,3 +17,11 @@ export interface UserRequestBody {
   email: string
   password: string
 }
+
+export interface UserData {
+  uuid: number
+  firstName: string
+  lastName: string
+  email: string
+  verified: true
+}

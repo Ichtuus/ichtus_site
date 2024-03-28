@@ -3,7 +3,7 @@ import { ApiError, NetworkError } from "../api/errors";
 class HttpClient {
   private baseUrl: string;
 
-  constructor(baseUrl: string = "/api") {
+  constructor(baseUrl: string = "http://192.168.1.19:5000/api") {
     this.baseUrl = baseUrl;
   }
 
@@ -36,13 +36,18 @@ class HttpClient {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
     };
 
     if (data) {
       requestOptions.body = JSON.stringify(data);
     }
 
-    const fullUrl = `${this.baseUrl}/${url}`;
+    const fullUrl = `${this.baseUrl}${url}`;
+    console.log("url", url);
+    console.log("baseurl", this.baseUrl);
+
+    console.log("full", fullUrl);
     const response = await fetch(fullUrl, requestOptions);
 
     await this.handleNetworkError(response);

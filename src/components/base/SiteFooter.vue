@@ -20,22 +20,22 @@ async function signInAction() {
     email: email.value as string,
     password: password.value as string,
   };
-  try {
-    await authStore.signin(payload);
-    toast.add({
-      severity: "success",
-      summary: "Info",
-      detail: "Correctly logged",
-      life: 3000,
-    });
-  } catch (e) {
-    toast.add({
-      severity: "error",
-      summary: "Info",
-      detail: "Error on login",
-      life: 3000,
-    });
-  }
+  // try {
+  await authStore.signin(payload);
+  //   toast.add({
+  //     severity: "success",
+  //     summary: "Info",
+  //     detail: "Correctly logged",
+  //     life: 3000,
+  //   });
+  // } catch (e) {
+  //   toast.add({
+  //     severity: "error",
+  //     summary: "Info",
+  //     detail: "Error on login",
+  //     life: 3000,
+  //   });
+  // }
 }
 </script>
 
